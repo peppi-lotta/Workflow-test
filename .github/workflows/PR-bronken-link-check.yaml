@@ -27,7 +27,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: |
-            --dump
+            --dump-inputs
             "**/*.md"
           output: ./existing-links.txt
         continue-on-error: true # Don't fail if base branch check has issues
