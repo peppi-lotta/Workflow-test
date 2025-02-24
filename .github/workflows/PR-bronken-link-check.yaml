@@ -28,7 +28,6 @@ jobs:
         with:
           args: |
             --dump
-            --mode color -vv
             --include-fragments
             --root-dir "$(pwd)/" 
             --fallback-extensions "md" 
