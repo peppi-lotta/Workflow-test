@@ -19,7 +19,7 @@ jobs:
         output: /tmp/lychee_output.md
         fail: false
 
-    - name: Create Issue From File Metal3.io
+    - name: Create Issue From File
       if: steps.linkcheck.outputs.exit_code != 0
       uses: peter-evans/create-issue-from-file@e8ef132d6df98ed982188e460ebb3b5d4ef3a9cd # v5.0.1
       with:
