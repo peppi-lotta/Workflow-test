@@ -28,6 +28,7 @@ jobs:
         with:
           args: |
             --dump
+            --mode color -vv
             --include-fragments
             --root-dir "$(pwd)/" 
             --fallback-extensions "md" 
@@ -55,6 +56,7 @@ jobs:
         with:
           args: |
             --user-agent "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0" 
+            --mode color -vv
             --root-dir "$(pwd)/"
             --fallback-extensions "md" 
             "./**/*.md"
