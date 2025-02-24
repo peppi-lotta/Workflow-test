@@ -29,7 +29,9 @@ jobs:
           args: |
             --dump
             --include-fragments
-            .
+            --root-dir "$(pwd)/" 
+            --fallback-extensions "md" 
+            "./**/*.md"
           output: ./existing-links.txt
         continue-on-error: true # Don't fail if base branch check has issues
 
