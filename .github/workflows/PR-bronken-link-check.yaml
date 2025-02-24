@@ -28,7 +28,6 @@ jobs:
         with:
           args: |
             --dump
-            --include-fragments
             --root-dir "$(pwd)/" 
             --fallback-extensions "md" 
             "./**/*.md"
