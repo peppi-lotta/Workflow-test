@@ -1,11 +1,6 @@
 name: Check Links
 on:
-  workflow_dispatch:
-  schedule:
-  - cron: "0 0 1 * *"
-  repository_dispatch:
-    # run manually
-    types: [check-link]
+  workflow_call
 
 permissions: {}
 
