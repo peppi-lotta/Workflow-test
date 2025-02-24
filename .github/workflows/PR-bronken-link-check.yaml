@@ -45,16 +45,17 @@ jobs:
       - name: Update ignore file
         run: |
           if [ -f "existing-links.txt" ]; then
-            cat existing-links.txt > .lycheeignore
+            cat existing-links.txt >> .lycheeignore
           fi
 
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
           args: |
-            --no-progress
-            --include-fragments
-            .
+            --user-agent "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0" 
+            --root-dir "$(pwd)/" 
+            --fallback-extensions "md" 
+            "./**/*.md"
 
       - name: Provide helpful failure message
         if: failure()
