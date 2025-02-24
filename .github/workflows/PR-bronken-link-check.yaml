@@ -45,7 +45,7 @@ jobs:
       - name: Update ignore file
         run: |
           if [ -f "existing-links.txt" ]; then
-            cat existing-links.txt >> .lycheeignore
+            cat existing-links.txt > .lycheeignore
           fi
 
       - name: Check links
