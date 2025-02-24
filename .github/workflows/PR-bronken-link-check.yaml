@@ -28,8 +28,6 @@ jobs:
         with:
           args: |
             --dump
-            --root-dir "$(pwd)/" 
-            --fallback-extensions "md" 
             "**/*.md"
           output: ./existing-links.txt
         continue-on-error: true # Don't fail if base branch check has issues
@@ -53,7 +51,6 @@ jobs:
         uses: lycheeverse/lychee-action@v2
         with:
           args: |
-            --user-agent "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:135.0) Gecko/20100101 Firefox/135.0" 
             --mode color -vv
             --root-dir "$(pwd)/"
             --fallback-extensions "md" 
