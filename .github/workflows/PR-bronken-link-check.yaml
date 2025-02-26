@@ -29,7 +29,7 @@ jobs:
           git diff --name-only origin/${{ github.event.pull_request.base.ref }}...${{ github.head_ref }} -- '*.md' > changed-files.txt
           cat changed-files.txt
           if [ -s changed-files.txt ]; then
-            Changed files found
+            echo "Changed md files found"
           fi
           
       - name: Switch to PR branch
