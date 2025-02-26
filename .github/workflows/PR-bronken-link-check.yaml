@@ -36,7 +36,7 @@ jobs:
           failIfEmpty: false
           args: |
             --no-progress
-            $( ${{ env.files }} | tr '\n' ' ')
+            ${{ env.files }}
 
       - name: Provide helpful failure message
         if: failure()
