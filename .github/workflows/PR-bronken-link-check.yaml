@@ -28,6 +28,13 @@ jobs:
         run: |
           git diff --name-only origin/${{ github.event.pull_request.base.ref }}...${{ github.head_ref }} -- '*.md' > changed-files.txt
           cat changed-files.txt
+          
+      - name: Exit early if no Markdown files changed
+        run: |
+          if [ ! -s changed-files.txt ]; then
+            echo "No Markdown files changed. Skipping link check."
+            exit 0
+          fi
 
       - name: Switch to PR branch
         run: git checkout ${{ github.head_ref }}
