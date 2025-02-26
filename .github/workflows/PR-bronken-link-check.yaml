@@ -26,17 +26,15 @@ jobs:
       - name: Get list of changed Markdown files
         id: changed-files
         run: |
-          git diff --name-only origin/${{ github.event.pull_request.base.ref }}...${{ github.head_ref }} -- '*.md' > changed-files.txt
-          cat changed-files.txt
+          files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...${{ github.head_ref }} -- '*.md')
+          echo "$files" > changed-files.txt
+          echo "files=$files" >> $GITHUB_ENV
           
-      - name: Exit early if no Markdown files changed
-        if: ${{ !steps.changed-files.outputs.files }}
+      - name: Skip link check if no Markdown files changed
+        if: env.files == ''
         run: |
-           echo "No Markdown files have changed."
-           exit 0
-
-      - name: Switch to PR branch
-        run: git checkout ${{ github.head_ref }}
+          echo "No Markdown files changed. Skipping link check."
+          exit 0
 
       - name: Check links in changed files
         uses: lycheeverse/lychee-action@v2
