@@ -29,14 +29,9 @@ jobs:
           files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...${{ github.head_ref }} -- '*.md')
           echo "$files" > changed-files.txt
           echo "files=$files" >> $GITHUB_ENV
-          
-      - name: Skip link check if no Markdown files changed
-        if: env.files == ''
-        run: |
-          echo "No Markdown files changed. Skipping link check."
-          exit 0
 
       - name: Check links in changed files
+        if: env.files != ''
         uses: lycheeverse/lychee-action@v2
         with:
           failIfEmpty: false
