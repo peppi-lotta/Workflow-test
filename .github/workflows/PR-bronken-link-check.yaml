@@ -42,6 +42,7 @@ jobs:
           failIfEmpty: false
           args: |
             --no-progress
+            --root-dir "$(pwd)/"
             $(cat changed-files.txt | tr '\n' ' ')
 
       - name: Provide helpful failure message
