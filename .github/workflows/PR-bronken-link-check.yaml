@@ -32,8 +32,8 @@ jobs:
       - name: Exit early if no Markdown files changed
         if: ${{ !steps.changed-files.outputs.files }}
         run: |
-          gh run cancel ${{ github.run_id }}
-          gh run watch ${{ github.run_id }}
+           echo "No Markdown files have changed."
+           exit 0
 
       - name: Switch to PR branch
         run: git checkout ${{ github.head_ref }}
