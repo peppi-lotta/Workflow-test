@@ -27,7 +27,6 @@ jobs:
         id: changed-files
         run: |
           files=$(git diff --name-only origin/${{ github.event.pull_request.base.ref }}...${{ github.head_ref }} -- '*.md')
-          echo "$files" > changed-files.txt
           echo "files=$files" >> $GITHUB_ENV
 
       - name: Check links in changed files
@@ -37,7 +36,7 @@ jobs:
           failIfEmpty: false
           args: |
             --no-progress
-            $(cat changed-files.txt | tr '\n' ' ')
+            $( ${{ env.files }} | tr '\n' ' ')
 
       - name: Provide helpful failure message
         if: failure()
