@@ -37,6 +37,7 @@ jobs:
         with:
           args: |
             --no-progress
+            -- failIfEmpty false
             $(cat changed-files.txt | tr '\n' ' ')
 
       - name: Provide helpful failure message
