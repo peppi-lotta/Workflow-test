@@ -28,12 +28,8 @@ jobs:
         run: |
           git diff --name-only origin/${{ github.event.pull_request.base.ref }}...${{ github.head_ref }} -- '*.md' > changed-files.txt
           cat changed-files.txt
-          if [ -s changed-files.txt ]; then
-            echo "files=true" >> $GITHUB_ENV
-          fi
 
       - name: Check links in changed files
-        if: env.files
         uses: lycheeverse/lychee-action@v2
         with:
           failIfEmpty: false
