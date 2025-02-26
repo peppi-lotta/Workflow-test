@@ -30,7 +30,7 @@ jobs:
           cat changed-files.txt
           if [ -s changed-files.txt ]; then
             echo "Changed md files found"
-            echo "foundFiles='true'" >> $GITHUB_ENV
+            echo "foundFiles=true" >> $GITHUB_ENV
           fi
           
       - name: Switch to PR branch
