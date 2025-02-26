@@ -31,6 +31,7 @@ jobs:
           cat changed-files.txt
           if [-s changed-files.txt]
             files="false"
+          fi
           echo "files=$files" >> $GITHUB_ENV
 
       - name: Check links in changed files
