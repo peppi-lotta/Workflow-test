@@ -30,11 +30,10 @@ jobs:
           cat changed-files.txt
           
       - name: Exit early if no Markdown files changed
+        if: ${{ !steps.changed-files.outputs.files }}
         run: |
-          if [ ! -s changed-files.txt ]; then
             echo "No Markdown files changed. Skipping link check."
             exit 0
-          fi
 
       - name: Switch to PR branch
         run: git checkout ${{ github.head_ref }}
